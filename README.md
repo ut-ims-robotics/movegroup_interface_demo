@@ -1,7 +1,7 @@
 # movegroup_interface_demo
 A package designed to help learning ROS MoveIt Move Group C++ Interface.
 
-Although this package should be usable with any properly setup MoveIt cnofiguration package, the development and testing has been conducted using xArm7 ROS support available at https://github.com/xArm-Developer/xarm_ros
+Although this package should be usable with any properly setup MoveIt configuration package, the development and testing has been conducted using xArm7 ROS support available at https://github.com/xArm-Developer/xarm_ros
 
 ## Running with xArm7
 
