@@ -66,6 +66,7 @@ int main(int argc, char** argv)
   {
     ROS_WARN("[movegroup_interface_demo/named_goal] Planning failed. Shutting Down.");
     ros::shutdown();
+    return 0;
   }
 
   // Executing the computed plan
