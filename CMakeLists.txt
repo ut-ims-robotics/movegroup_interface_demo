@@ -24,7 +24,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES movegroup_interface_tutorial
-  CATKIN_DEPENDS geometry_msgs roscpp
+  CATKIN_DEPENDS geometry_msgs roscpp moveit_ros_planning_interface
 #  DEPENDS system_lib
 )
 
