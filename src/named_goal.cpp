@@ -25,13 +25,14 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Author: Karl Kruusamäe */
 /* E-mail: karl.kruusamae@ut.ee */
 
+#include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
 
 int main(int argc, char** argv)
 {
   // Basic ROS setup
   // ^^^^^^^^^^^^^^^
-  ros::init(argc, argv, "pose_goal");
+  ros::init(argc, argv, "named_goal");
   ros::NodeHandle node_handle;
   ros::AsyncSpinner spinner(1);
   spinner.start();

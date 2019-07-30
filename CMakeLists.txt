@@ -5,13 +5,9 @@ project(movegroup_interface_demo)
 add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
-  rospy
-  std_msgs
   moveit_ros_planning_interface
 )
 
@@ -28,7 +24,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES movegroup_interface_tutorial
-#  CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs
+  CATKIN_DEPENDS geometry_msgs roscpp
 #  DEPENDS system_lib
 )
 
@@ -48,4 +44,3 @@ target_link_libraries(pose_goal ${catkin_LIBRARIES})
 
 add_executable(named_goal src/named_goal.cpp)
 target_link_libraries(named_goal ${catkin_LIBRARIES})
-
