@@ -5,7 +5,12 @@ The underlying idea for this package is to provide easy-to-understand coding exa
 + the coding aims to be as minimalistic as possible with intuitive variable names;
 + different features are exemplified individually in separate ROS nodes to make code readable for beginners in computer programming.
 
-Although this ROS package should be usable with any properly set up MoveIt configuration package, the development and testing has been conducted using xArm7 ROS support available at https://github.com/xArm-Developer/xarm_ros
+## Prerequisites
+1. If you don't have the MoveIt Move Group Interface package on your ROS system, you can easily install it with the following command.
+```bash
+sudo apt install ros-$ROS_DISTRO-moveit-ros-planning-interface
+```
+2. You also need a MoveIt configuration package to use this demo. Although this package should be usable with any properly setup MoveIt configuration package, the development and testing has been conducted using xArm7 ROS support available at https://github.com/xArm-Developer/xarm_ros
 
 ## Running with xArm7
 
