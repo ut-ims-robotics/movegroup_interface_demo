@@ -45,5 +45,8 @@ target_link_libraries(pose_goal ${catkin_LIBRARIES})
 add_executable(named_goal src/named_goal.cpp)
 target_link_libraries(named_goal ${catkin_LIBRARIES})
 
+add_executable(joint_value_goal src/joint_value_goal.cpp)
+target_link_libraries(joint_value_goal ${catkin_LIBRARIES})
+
 add_executable(cartesian_path src/cartesian_path.cpp)
 target_link_libraries(cartesian_path ${catkin_LIBRARIES})
