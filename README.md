@@ -31,6 +31,11 @@ Demonstration of planning to a ***named*** goal
 rosrun movegroup_interface_demo named_goal
 ```
 
+Demonstration of planning to a ***joint value*** goal
+```bash
+rosrun movegroup_interface_demo joint_value_goal
+```
+
 Demonstration of computing a ***Cartesian path***
 ```bash
 rosrun movegroup_interface_demo cartesian_path
