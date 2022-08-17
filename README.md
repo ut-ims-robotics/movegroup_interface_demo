@@ -55,6 +55,11 @@ Demonstration of closing the gripper by planning to a ***named*** goal
 rosrun movegroup_interface_demo gripper_close
 ```
 
+Demonstration of controlling the gripper by planning to a ***joint value*** goal
+```bash
+rosrun movegroup_interface_demo gripper_control_joint_value
+```
+
 ## Other robots
 
 In order to use movegroup_interface_demo with other MoveIt planning groups, adjust hard-coded planning group names and pose values in the .cpp files located in `src` folder.

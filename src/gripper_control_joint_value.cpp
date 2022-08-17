@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 {
   // Basic ROS setup
   // ^^^^^^^^^^^^^^^
-  ros::init(argc, argv, "gripper_close");
+  ros::init(argc, argv, "gripper_control_joint_value");
   ros::NodeHandle node_handle;
   ros::AsyncSpinner spinner(1);
   spinner.start();
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
   // Controlling a gripper with MoveIt makes use of the same concepts as controlling the manipulator robots.
   // We need to create an instance of MoveGroupInterface, set target states for the gripper,
   // and then plan & execute motions for the gripper.
-  // In this coding example the gripper is controlled by using named states, so it is analogous to named_goal.cpp
+  // In this example the gripper is controlled by using joint values, so the code is analogous to join_value_goal.cpp
 
   // MoveIt setup
   // ^^^^^^^^^^^^
@@ -51,13 +51,11 @@ int main(int argc, char** argv)
   // planning group we would like to control and plan for.
   moveit::planning_interface::MoveGroupInterface move_group("xarm_gripper");
 
-  // Planning to a predefined named pose
-  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  // To close and open a gripper, we can often use named states which have been 
-  // defined for the gripper planning group using the MoveIt Setup Assistant.
-
-  // Setting the named pose "close" as target
-  move_group.setNamedTarget("close");
+  // Planning to a joint value goal
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // To control a gripper we can specify a target value for the joint that determines the distance between fingers.
+  // For xarm_gripper, that joint is called "drive_joint", so we can set a value for it in the range 0-0.85 rad.
+  move_group.setJointValueTarget("drive_joint", 0.6);
 
   // Calling the planner to compute the motion plan, which is then stored in my_plan.
   // Note that we are just planning, not asking MoveGroupInterface to actually move the robot.
@@ -65,11 +63,11 @@ int main(int argc, char** argv)
   moveit::core::MoveItErrorCode success = move_group.plan(my_plan);
   if (success)
   {
-    ROS_INFO("[movegroup_interface_demo/gripper_close] Planning OK. Proceeding.");
+    ROS_INFO("[movegroup_interface_demo/gripper_control_joint_value] Planning OK. Proceeding.");
   }
   else
   {
-    ROS_WARN("[movegroup_interface_demo/gripper_close] Planning failed. Shutting Down.");
+    ROS_WARN("[movegroup_interface_demo/gripper_control_joint_value] Planning failed. Shutting Down.");
     ros::shutdown();
     return 0;
   }
