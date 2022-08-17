@@ -93,7 +93,7 @@ int main(int argc, char** argv)
   // Calling the planner to compute the motion plan, which is then stored in my_plan.
   // Note that we are just planning, not asking MoveGroupInterface to actually move the robots.
   moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-  moveit::planning_interface::MoveItErrorCode success = move_group.plan(my_plan);
+  moveit::core::MoveItErrorCode success = move_group.plan(my_plan);
   if (success)
   {
     ROS_INFO("[movegroup_interface_demo/dual_pose_goal] Planning OK. Proceeding.");
