@@ -41,6 +41,25 @@ Demonstration of computing a ***Cartesian path***
 rosrun movegroup_interface_demo cartesian_path
 ```
 
+## Running with xArm7 and its gripper
+
+Clone repositories for xarm_ros and movegroup_interface_demo to your catkin workspace and compile it.
+
+Using `demo.launch` to run MoveIt and visualize the xArm7 manipulator with gripper in RViz
+```bash
+roslaunch xarm7_gripper_moveit_config demo.launch
+```
+
+Demonstration of closing the gripper by planning to a ***named*** goal
+```bash
+rosrun movegroup_interface_demo gripper_close
+```
+
+Demonstration of controlling the gripper by planning to a ***joint value*** goal
+```bash
+rosrun movegroup_interface_demo gripper_control_joint_value
+```
+
 ## Other robots
 
 In order to use movegroup_interface_demo with other MoveIt planning groups, adjust hard-coded planning group names and pose values in the .cpp files located in `src` folder.

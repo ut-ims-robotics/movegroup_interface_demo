@@ -1,5 +1,5 @@
 /*
-Copyright 2019, University of Tartu
+Copyright 2022, University of Tartu
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
 following conditions are met:
@@ -27,42 +27,37 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
-#include <vector>
 
 int main(int argc, char** argv)
 {
   // Basic ROS setup
   // ^^^^^^^^^^^^^^^
-  ros::init(argc, argv, "joint_value_goal");
+  ros::init(argc, argv, "gripper_close");
   ros::NodeHandle node_handle;
   ros::AsyncSpinner spinner(1);
   spinner.start();
 
   // MoveGroupInterface API can be found at:
-  // http://docs.ros.org/kinetic/api/moveit_ros_planning_interface/html/classmoveit_1_1planning__interface_1_1MoveGroupInterface.html
+  // http://docs.ros.org/noetic/api/moveit_ros_planning_interface/html/classmoveit_1_1planning__interface_1_1MoveGroupInterface.html
+
+  // Controlling a gripper with MoveIt makes use of the same concepts as controlling the manipulator robots.
+  // We need to create an instance of MoveGroupInterface, set target states for the gripper,
+  // and then plan & execute motions for the gripper.
+  // In this coding example the gripper is controlled by using named states, so it is analogous to named_goal.cpp
 
   // MoveIt setup
   // ^^^^^^^^^^^^
   // A MoveGroupInterface instance (a client for the MoveGroup action) can be easily setup using just the name of the
-  // planning group you would like to control and plan for.
-  moveit::planning_interface::MoveGroupInterface move_group("xarm7");
+  // planning group we would like to control and plan for.
+  moveit::planning_interface::MoveGroupInterface move_group("xarm_gripper");
 
-  // Planning to a joint value goal
-  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  // We can plan a motion for this group by specifying target values for its joints. The MoveGroupInterface API provides
-  // several ways for setting the joint-space goal but in this example a vector containing target values for all the
-  // joints is used.
+  // Planning to a predefined named pose
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // To close and open a gripper, we can often use named states which have been 
+  // defined for the gripper planning group using the MoveIt Setup Assistant.
 
-  // Getting the current joint values of the robot.
-  std::vector<double> joint_values = move_group.getCurrentJointValues();
-
-  // Modifying the 4th joint value to 1.57 radians (90 degrees).
-  // Feel free to modify the joint number, target value, and the number of influenced joints.
-  joint_values[3] = 1.57;
-  // joint_values[0] = -1.57;
-
-  // Setting the joint_values as joint-space goal.
-  move_group.setJointValueTarget(joint_values);
+  // Setting the named pose "close" as target
+  move_group.setNamedTarget("close");
 
   // Calling the planner to compute the motion plan, which is then stored in my_plan.
   // Note that we are just planning, not asking MoveGroupInterface to actually move the robot.
@@ -70,11 +65,11 @@ int main(int argc, char** argv)
   moveit::core::MoveItErrorCode success = move_group.plan(my_plan);
   if (success)
   {
-    ROS_INFO("[movegroup_interface_demo/joint_value_goal] Planning OK. Proceeding.");
+    ROS_INFO("[movegroup_interface_demo/gripper_close] Planning OK. Proceeding.");
   }
   else
   {
-    ROS_WARN("[movegroup_interface_demo/joint_value_goal] Planning failed. Shutting Down.");
+    ROS_WARN("[movegroup_interface_demo/gripper_close] Planning failed. Shutting Down.");
     ros::shutdown();
     return 0;
   }

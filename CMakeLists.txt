@@ -53,3 +53,9 @@ target_link_libraries(cartesian_path ${catkin_LIBRARIES})
 
 add_executable(dual_pose_goal src/dual_pose_goal.cpp)
 target_link_libraries(dual_pose_goal ${catkin_LIBRARIES})
+
+add_executable(gripper_close src/gripper_close.cpp)
+target_link_libraries(gripper_close ${catkin_LIBRARIES})
+
+add_executable(gripper_control_joint_value src/gripper_control_joint_value.cpp)
+target_link_libraries(gripper_control_joint_value ${catkin_LIBRARIES})
