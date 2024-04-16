@@ -1,26 +1,18 @@
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>movegroup_interface_demo</name>
   <version>0.0.0</version>
   <description>A package designed to help learning ROS MoveIt Move Group C++ Interface</description>
-
   <maintainer email="karl.kruusamae@ut.ee">Karl Kruusamäe</maintainer>
+  <license>Apache 2.0</license>
 
-  <license>3-clause BSD</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <url type="website">https://github.com/ut-ims-robotics/movegroup_interface_demo</url>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
 
-  <author email="karl.kruusamae@ut.ee">Karl Kruusamäe</author>
-
-  <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>moveit_ros_planning_interface</build_depend>
-  <build_export_depend>geometry_msgs</build_export_depend>
-  <build_export_depend>roscpp</build_export_depend>
-  <build_export_depend>moveit_ros_planning_interface</build_export_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>roscpp</exec_depend>
-  <exec_depend>moveit_ros_planning_interface</exec_depend>
-
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>
