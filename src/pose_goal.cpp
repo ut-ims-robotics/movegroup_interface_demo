@@ -1,8 +1,8 @@
 #include <memory>
 #include <rclcpp/rclcpp.hpp>
-#include <moveit/move_group_interface/move_group_interface.h>
-#include <geometry_msgs/msg/pose_stamped.h>
-#include <geometry_msgs/msg/pose.h>
+#include <moveit/move_group_interface/move_group_interface.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <geometry_msgs/msg/pose.hpp>
 
 int main(int argc, char * argv[])
 {
